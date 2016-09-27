@@ -21,10 +21,10 @@ app.use(bodyParser.json())
 
 
 // index page
-/* app.get('/', function (req, res) {
+app.get('/', function (req, res) {
   res.send('hello world i am a chat bot')
 })
-*/
+
 
 // for facebook to verify
 app.get('/webhooks', function (req, res) {
