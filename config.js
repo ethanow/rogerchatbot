@@ -6,7 +6,7 @@ if (!WIT_TOKEN) {
 }
 
 
-var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAHtC0sImLwBACZCQhHJvussoBVqb52ALghazKjYMrk6L7nfhjKHbPH9oNSWlFXdwYnLuFrryONNCj5cdui0jTkuHVmmORAWia4ykaseqdRJ5pAUrEPCethVem2PycadnsZABZCJRRZCdP4gqouiUPHlU6HbEJZBN8lOXMhoYCQZDZD';
+var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN
 if (!FB_PAGE_TOKEN) {
 	throw new Error('Missing FB_PAGE_TOKEN. Go to https://developers.facebook.com/docs/pages/access-tokens to get one.')
 }
