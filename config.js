@@ -1,12 +1,12 @@
 'use strict';
 
-const WIT_TOKEN = process.env.WIT_TOKEN ||
+const WIT_TOKEN = process.env.WIT_TOKEN
 if (!WIT_TOKEN) {
   throw new Error('Missing WIT_TOKEN. Go to https://wit.ai/docs/quickstart to get one.')
 }
 
 
-var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 
+var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAHtC0sImLwBACZCQhHJvussoBVqb52ALghazKjYMrk6L7nfhjKHbPH9oNSWlFXdwYnLuFrryONNCj5cdui0jTkuHVmmORAWia4ykaseqdRJ5pAUrEPCethVem2PycadnsZABZCJRRZCdP4gqouiUPHlU6HbEJZBN8lOXMhoYCQZDZD';
 if (!FB_PAGE_TOKEN) {
 	throw new Error('Missing FB_PAGE_TOKEN. Go to https://developers.facebook.com/docs/pages/access-tokens to get one.')
 }
