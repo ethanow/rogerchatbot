@@ -55,7 +55,7 @@ app.post('/webhooks', function (req, res) {
       //   console.log ("INDEX.JS:Reply from bot ",reply)
 
       //   // Reply to sender using facebook.js
-      //   FB.newMessage(sender, reply)
+         FB.newMessage(sender, reply)
       })
     }
   }
