@@ -116,7 +116,13 @@ var actions = {
 		// 		})
 		// }
 		console.log('WIT.JS: Getflight')
-		context.flight_num = findExpediaFlight(context)
+		findExpediaFlight(context)
+				.then(function (flightDetail) {
+					context.flight_num = flightDetail || 'sunny'
+				})
+				.catch(function (err) {
+					console.log(err)
+				})
 
 		cb(context)
 	},
@@ -126,7 +132,7 @@ var actions = {
 var findExpediaFlight = function(context){
 	var loc = context.loc
 	var date = context.date
-	console.log('WIT.JS: Searching for: ', loc, ', time: ', date)
+	console.log('WIT.JS: Searching for: ', loc, ', date: ', date)
 	return new Promise(function (resolve, reject) {
     var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=' + loc + '&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
         request(url, function (error, response, body) {
