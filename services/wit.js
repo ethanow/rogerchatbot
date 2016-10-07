@@ -59,10 +59,6 @@ var actions = {
 		
 	},
 
-	getFlight(sessionId, context, entities, message, cb) {
-		console.log('GetFlight success')
-
-	},
 
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
@@ -74,6 +70,20 @@ var actions = {
       context.cat = category;
       console.log('WIT.JS: Merge amount')
     }
+
+		// Retrive the location entity and store it in the context field
+		var loc = firstEntityValue(entities, 'location')
+		if (loc) {
+			context.loc = loc
+			console.log('WIT.JS:Merge location',loc)
+		}
+
+		var date = firstEntityValue(entities, 'datetime')
+		if (date) {
+			context.date = date
+			console.log('WIT.JS:Merge date',date)
+		}
+
 		/*
 		delete context.forecast
 
@@ -120,6 +130,9 @@ var actions = {
 		cb(context)
 	},
 	
+	['getFlight'](sessionID, context, cb){
+		console.log('WIT.JS: getFlight now!!')
+	},
 
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
