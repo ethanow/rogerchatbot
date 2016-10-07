@@ -48,9 +48,9 @@ var read = function (sender, message, reply) {
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
 		wit.runActions(
-			sessionId, // the user's current session by id
+			sessionId.fbid, // the user's current session by id
 			message,  // the user's message
-			sessions[sessionId].context, // the user's session state
+			sessionId.context, // the user's session state
 			function (error, context) { // callback
 			if (error) {
 				console.log('BOT.JS: Oops! Got an error from Wit:', error)
