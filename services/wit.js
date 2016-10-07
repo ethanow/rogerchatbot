@@ -143,7 +143,7 @@ var actions = {
 		// 		})
 		// }
 		console.log('WIT.JS: Getflight')
-		context.flight_details = 'Sunny'
+		context.flight_num = 'Sunny'
 
 		cb(context)
 	},
