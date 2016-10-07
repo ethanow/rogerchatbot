@@ -134,7 +134,7 @@ var findExpediaFlight = function(context){
 	var date = context.date
 	console.log('WIT.JS: Searching for: ', loc, ', date: ', date)
 	return new Promise(function (resolve, reject) {
-    var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=' + loc + '&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
+    var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=BKK&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var jsonData = JSON.parse(body)
