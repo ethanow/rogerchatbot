@@ -3,6 +3,7 @@
 var Config = require('../config')
 var FB = require('../connectors/facebook')
 var Wit = require('node-wit').Wit
+var log = require('node-wit').log
 var request = require('request')
 
 
@@ -27,29 +28,54 @@ var actions = {
 			return
 		}
 
-		console.log('WIT WANTS TO TALK TO:', context._fbid_)
-		console.log('WIT HAS SOMETHING TO SAY:', message)
-		console.log('WIT HAS A CONTEXT:', context)
-
-		if (checkURL(message)) {
-			FB.newMessage(context._fbid_, message, true)
-		} else {
-			FB.newMessage(context._fbid_, message)
+		
+		console.log('WIT.JS:Delete old context')
+		if (context.loc){
+			delete context.loc
+			console.log('WIT.JS:Deleting loc')
 		}
 
-		
+		if (context.logSpend){
+			delete context.logSpend
+			console.log('WIT.JS:Deleting logSpend')
+		}
+
+		if (context.amt){
+			delete context.amt
+			console.log('WIT.JS:Deleting logSpend')
+		}
+
+		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
+		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
+		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
+
+
+		// Pass message to FB
+		FB.newMessage(context._fbid_, message)	
+
 		cb()
 		
 	},
 
+
 	merge(sessionId, context, entities, message, cb) {
-		// Reset the weather story
+		console.log('WIT.JS: Calling Merge')
+		// Reset the amount
+		
+	  delete context.cat;
+    const category = firstEntityValue(entities, 'category');
+    if (category) {
+      context.cat = category;
+      console.log('WIT.JS: Merge amount')
+    }
+		/*
 		delete context.forecast
 
 		// Retrive the location entity and store it in the context field
 		var loc = firstEntityValue(entities, 'location')
 		if (loc) {
 			context.loc = loc
+			console.log('WIT.JS:Merge location',loc)
 		}
 
 		// Reset the cutepics story
@@ -59,6 +85,7 @@ var actions = {
 		var category = firstEntityValue(entities, 'category')
 		if (category) {
 			context.cat = category
+			console.log('WIT.JS:Merge caterory',cat)
 		}
 
 		// Retrieve the sentiment
@@ -68,15 +95,26 @@ var actions = {
 		} else {
 			delete context.ack
 		}
-
+		*/
 		cb(context)
 	},
 
 	error(sessionId, context, error) {
-		console.log(error.message)
+		console.log("WIT.JS: Error",error.message)
 	},
 
 	// list of functions Wit.ai can execute
+	
+	['logSpend'](sessionId, context, cb) {
+		console.log('WIT.JS: Update context.logSpend')
+		context.logSpend = 'Logged'
+
+		// Insert API call to save the amount_of_money
+
+		cb(context)
+	},
+	
+
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
 		// if (context.loc) {
@@ -88,15 +126,8 @@ var actions = {
 		// 			console.log(err)
 		// 		})
 		// }
-
+		console.log('WIT.JS: Update context.forecast')
 		context.forecast = 'Sunny'
-
-		cb(context)
-	},
-
-	['fetch-pics'](sessionId, context, cb) {
-		var wantedPics = allPics[context.cat || 'default']
-		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
 
 		cb(context)
 	},
@@ -118,7 +149,7 @@ if (require.main === module) {
 	var client = getWit()
 	client.interactive()
 }
-
+/*
 // GET WEATHER FROM API
 var getWeather = function (location) {
 	return new Promise(function (resolve, reject) {
@@ -133,7 +164,7 @@ var getWeather = function (location) {
 			})
 	})
 }
-
+*/
 // CHECK IF URL IS AN IMAGE FILE
 var checkURL = function (url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
