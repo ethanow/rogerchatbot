@@ -29,7 +29,7 @@ var findOrCreateSession = function (fbid) {
   }
 
   console.log('fbid is:',sessionId)
-  return sessionId
+  return sessions[sessionId]
 }
 
 var read = function (sender, message, reply) {
