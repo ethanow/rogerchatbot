@@ -119,6 +119,7 @@ var actions = {
 		findExpediaFlight(context)
 				.then(function (flightDetail) {
 					context.flight_num = flightDetail || 'sunny'
+					console.log('WIT.JS: context.flight_num',flightDetail)
 				})
 				.catch(function (err) {
 					console.log(err)
