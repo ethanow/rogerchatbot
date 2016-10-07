@@ -3,6 +3,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
+var fetch = require('node-fetch')
+var crypto = require('crypto')
 
 var Config = require('./config')
 var FB = require('./connectors/facebook')
@@ -25,7 +27,6 @@ app.get('/', function (req, res) {
   res.send('hello world i am a chat bot')
 })
 
-
 // for facebook to verify
 app.get('/webhooks', function (req, res) {
   if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
@@ -34,7 +35,9 @@ app.get('/webhooks', function (req, res) {
   res.send('Error, wrong token')
 })
 
-// to send messages to facebook
+console.log("I'm live!")
+
+// to send and receive messages to facebook
 app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
@@ -43,14 +46,22 @@ app.post('/webhooks', function (req, res) {
       // NOT SMART ENOUGH FOR ATTACHMENTS YET
       FB.newMessage(entry.sender.id, "That's interesting!")
     } else {
-      // SEND TO BOT FOR PROCESSING
+      console.log("INDEX.JS:Received message from ",entry.sender.id)
+      console.log("INDEX.JS:message is",entry.message.text)
+      // FB.newMessage(entry.sender.id,entry.message.text)
+
+      // SEND TO BOT FOR PROCESSING bot.js read
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-        FB.newMessage(sender, reply)
+      //   console.log ("INDEX.JS:Reply from bot ",reply)
+
+      //   // Reply to sender using facebook.js
+      //   FB.newMessage(sender, reply)
       })
     }
   }
 
-
-
   res.sendStatus(200)
 })
+
+
+// wit.ai bot's ID: 910581902328591
