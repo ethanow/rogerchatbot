@@ -30,23 +30,6 @@ var actions = {
 			return
 		}
 
-		
-		console.log('WIT.JS:Delete old context')
-		if (context.loc){
-			delete context.loc
-			console.log('WIT.JS:Deleting loc')
-		}
-
-		if (context.logSpend){
-			delete context.logSpend
-			console.log('WIT.JS:Deleting logSpend')
-		}
-
-		if (context.amt){
-			delete context.amt
-			console.log('WIT.JS:Deleting logSpend')
-		}
-
 		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
@@ -65,7 +48,7 @@ var actions = {
 		// Reset the amount
 		
 	  delete context.cat;
-    const category = firstEntityValue(entities, 'category');
+    var category = firstEntityValue(entities, 'category');
     if (category) {
       context.cat = category;
       console.log('WIT.JS: Merge amount')
@@ -128,10 +111,6 @@ var actions = {
 		// Insert API call to save the amount_of_money
 
 		cb(context)
-	},
-	
-	['getFlight'](sessionID, context, cb){
-		console.log('WIT.JS: getFlight now!!')
 	},
 
 	['fetch-weather'](sessionId, context, cb) {
