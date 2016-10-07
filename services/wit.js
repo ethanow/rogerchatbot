@@ -143,11 +143,17 @@ var actions = {
 		// 		})
 		// }
 		console.log('WIT.JS: Getflight')
-		context.flight_num = 'Sunny'
+		context.flight_num = findExpediaFlight(context)
 
 		cb(context)
 	},
 
+}
+
+var findExpediaFlight = function(context){
+	var loc = context.location
+	var date = context.datetime
+	console.log('WIT.JS: Searching for: ', loc, ', time: ', date)
 }
 
 // SETUP THE WIT.AI SERVICE
