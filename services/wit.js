@@ -127,7 +127,7 @@ var findExpediaFlight = function(context){
 	var loc = context.loc
 	var date = context.date
 	console.log('WIT.JS: Searching for: ', loc, ', time: ', date)
-	context.flight_details = "No flights available"
+	return "No flights available"
 }
 
 // SETUP THE WIT.AI SERVICE
