@@ -127,7 +127,18 @@ var findExpediaFlight = function(context){
 	var loc = context.loc
 	var date = context.date
 	console.log('WIT.JS: Searching for: ', loc, ', time: ', date)
-	return "No flights available"
+	return new Promise(function (resolve, reject) {
+    var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=' + loc + '&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var jsonData = JSON.parse(body)
+                var flightTime = jsonData.legs[0].segments.departureTimeRaw.text
+                var flightNo = jsonData.legs[0].segments.externalAirlineCode.text + jsonData.legs[0].segments.flightNumber.text
+                console.log('EXPEDIA API SAYS: ', flightNo, 'on time: ', flightTime)
+                return flightNo + ', departing at ' + flightTime
+            }
+        })
+    })
 }
 
 // SETUP THE WIT.AI SERVICE
