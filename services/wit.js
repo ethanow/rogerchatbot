@@ -133,6 +133,25 @@ var actions = {
 
 		cb(context)
 	},
+
+
+	['getFlight'](sessionId, context, cb) {
+		// Here we can place an API call to a weather service
+		// if (context.loc) {
+		// 	getWeather(context.loc)
+		// 		.then(function (forecast) {
+		// 			context.forecast = forecast || 'sunny'
+		// 		})
+		// 		.catch(function (err) {
+		// 			console.log(err)
+		// 		})
+		// }
+		console.log('WIT.JS: Getflight')
+		context.flight_details = 'Sunny'
+
+		cb(context)
+	},
+
 }
 
 // SETUP THE WIT.AI SERVICE
