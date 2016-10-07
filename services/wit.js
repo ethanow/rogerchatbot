@@ -136,8 +136,11 @@ var findExpediaFlight = function(context){
 	console.log('WIT.JS: Searching for: ', loc, ', date: ', date)
 	return new Promise(function (resolve, reject) {
 		console.log('EXPEDIA API SAYS:')
-    var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=BKK&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
+    // var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=BKK&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
+    var url = 'http://www.google.com'
+        request(url, function (error, response, body) {
         return 'SQ123'
+      }
         /*
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
