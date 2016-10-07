@@ -140,7 +140,7 @@ var findExpediaFlight = function(context){
     var url = 'http://www.google.com'
         request(url, function (error, response, body) {
         return 'SQ123'
-      }
+      })
         /*
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
