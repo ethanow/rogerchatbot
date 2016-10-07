@@ -21,6 +21,7 @@ var firstEntityValue = function (entities, entity) {
 
 
 var actions = {
+	console.log("WIT.JS: running actions"),
 	say (sessionId, context, message, cb) {
 		// Bot testing mode, run cb() and return
 		if (require.main === module) {
