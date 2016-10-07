@@ -103,33 +103,6 @@ var actions = {
 	},
 
 	// list of functions Wit.ai can execute
-	
-	['logSpend'](sessionId, context, cb) {
-		console.log('WIT.JS: Update context.logSpend')
-		context.logSpend = 'Logged'
-
-		// Insert API call to save the amount_of_money
-
-		cb(context)
-	},
-
-	['fetch-weather'](sessionId, context, cb) {
-		// Here we can place an API call to a weather service
-		// if (context.loc) {
-		// 	getWeather(context.loc)
-		// 		.then(function (forecast) {
-		// 			context.forecast = forecast || 'sunny'
-		// 		})
-		// 		.catch(function (err) {
-		// 			console.log(err)
-		// 		})
-		// }
-		console.log('WIT.JS: Update context.forecast')
-		context.forecast = 'Sunny'
-
-		cb(context)
-	},
-
 
 	['getFlight'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
@@ -151,8 +124,8 @@ var actions = {
 }
 
 var findExpediaFlight = function(context){
-	var loc = context.location
-	var date = context.datetime
+	var loc = context.loc
+	var date = context.date
 	console.log('WIT.JS: Searching for: ', loc, ', time: ', date)
 }
 
@@ -191,31 +164,4 @@ var getWeather = function (location) {
 // CHECK IF URL IS AN IMAGE FILE
 var checkURL = function (url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-}
-
-// LIST OF ALL PICS
-var allPics = {
-  corgis: [
-    'http://i.imgur.com/uYyICl0.jpeg',
-    'http://i.imgur.com/useIJl6.jpeg',
-    'http://i.imgur.com/LD242xr.jpeg',
-    'http://i.imgur.com/Q7vn2vS.jpeg',
-    'http://i.imgur.com/ZTmF9jm.jpeg',
-    'http://i.imgur.com/jJlWH6x.jpeg',
-		'http://i.imgur.com/ZYUakqg.jpeg',
-		'http://i.imgur.com/RxoU9o9.jpeg',
-  ],
-  racoons: [
-    'http://i.imgur.com/zCC3npm.jpeg',
-    'http://i.imgur.com/OvxavBY.jpeg',
-    'http://i.imgur.com/Z6oAGRu.jpeg',
-		'http://i.imgur.com/uAlg8Hl.jpeg',
-		'http://i.imgur.com/q0O0xYm.jpeg',
-		'http://i.imgur.com/BrhxR5a.jpeg',
-		'http://i.imgur.com/05hlAWU.jpeg',
-		'http://i.imgur.com/HAeMnSq.jpeg',
-  ],
-  default: [
-    'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
-  ],
 };
