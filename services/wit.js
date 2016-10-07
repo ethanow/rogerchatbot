@@ -60,8 +60,8 @@ var actions = {
 	},
 
 
-	merge(sessionId, context, entities, message, cb) {
-		console.log('WIT.JS: Calling Merge')
+	getFlight(sessionId, context, entities, message, cb) {
+		console.log('WIT.JS: Calling getFlight')
 		// Reset the amount
 		
 	  delete context.cat;
@@ -130,24 +130,6 @@ var actions = {
 		// }
 		console.log('WIT.JS: Update context.forecast')
 		context.forecast = 'Sunny'
-
-		cb(context)
-	},
-
-
-	['getFlight'](sessionId, context, cb) {
-		// Here we can place an API call to a weather service
-		// if (context.loc) {
-		// 	getWeather(context.loc)
-		// 		.then(function (forecast) {
-		// 			context.forecast = forecast || 'sunny'
-		// 		})
-		// 		.catch(function (err) {
-		// 			console.log(err)
-		// 		})
-		// }
-		console.log('WIT.JS: Getflight')
-		context.flight_details = 'Sunny'
 
 		cb(context)
 	},
