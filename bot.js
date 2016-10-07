@@ -28,6 +28,7 @@ var findOrCreateSession = function (fbid) {
     }
   }
 
+  console.log('fbid is:',sessionId)
   return sessionId
 }
 
