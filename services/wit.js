@@ -54,6 +54,7 @@ var actions = {
 			console.log('WIT.JS:Merge date',date)
 		}
 
+
 		var flightDetail = 'Sunny'
 		context.flights = flightDetail
 
@@ -63,6 +64,29 @@ var actions = {
 	['getFlight'](sessionId, context, cb){
 		console.log("WIT.JS Getting Flights in getFlight actions")
 		context.flights = 'No flights'
+		cb(context)
+	},
+
+	['memorizeCat'](sessionId, context, cb){
+		console.log("WIT.JS Getting Flights in getFlight actions")
+
+		var cat = firstEntityValue(entities, 'category')
+		if (cat) {
+			context.cat = cat
+			console.log('WIT.JS:memorizeCat')
+
+		}
+
+		var details = firstEntityValue(entities, 'details')
+		if (details) {
+			context.det = details
+
+			console.log('WIT.JS:memorizeCat')
+
+		}
+
+		// call some function to save the context.det and context.cat
+
 		cb(context)
 	},
 
