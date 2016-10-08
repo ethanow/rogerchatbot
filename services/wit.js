@@ -42,6 +42,20 @@ var actions = {
 
 
 		console.log('Wit.JS: gettingFlight')
+
+
+		var loc = firstEntityValue(entities, 'location')
+		if (loc) {
+			context.loc = loc
+			console.log('WIT.JS:Merge location',loc)
+		}
+
+		var date = firstEntityValue(entities, 'datetime')
+		if (date) {
+			context.date = date
+			console.log('WIT.JS:Merge date',date)
+		}
+
 		var flightDetail = 'Sunny'
 		context.flight_details = flightDetail
 
