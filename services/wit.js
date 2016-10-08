@@ -40,9 +40,7 @@ var actions = {
 
 	callgetFlight(sessionId, context, entities, message, cb) {
 
-
 		console.log('Wit.JS: gettingFlight')
-
 
 		var loc = firstEntityValue(entities, 'location')
 		if (loc) {
@@ -62,13 +60,13 @@ var actions = {
 		cb(context)
 	},
 
-
 	merge(sessionId, context, entities, message, cb) {
 		cb(context)
 	},
 
 	['getFlight'](sessionId, context, cb){
-		console.log("Getting Flights")
+		console.log("Getting Flights in getFlight actions")
+		context.flights = 'No flights'
 	},
 
 	error(sessionId, context, error) {
