@@ -108,33 +108,7 @@ var actions = {
 
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
-	},
-
-	// list of functions Wit.ai can execute
-
-	['getFlight'](sessionId, context, cb) {
-		// Here we can place an API call to a weather service
-		// if (context.loc) {
-		// 	getWeather(context.loc)
-		// 		.then(function (forecast) {
-		// 			context.forecast = forecast || 'sunny'
-		// 		})
-		// 		.catch(function (err) {
-		// 			console.log(err)
-		// 		})
-		// }
-		console.log('WIT.JS: Getflight')
-		findExpediaFlight(context)
-				.then(function (flightDetail) {
-					context.flight_num = flightDetail || 'sunny'
-					console.log('WIT.JS: context.flight_num',flightDetail)
-				})
-				.catch(function (err) {
-					console.log(err)
-				})
-
-		cb(context)
-	},
+	}
 
 }
 
