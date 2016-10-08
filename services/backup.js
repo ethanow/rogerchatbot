@@ -42,14 +42,6 @@ var actions = {
 		
 	},
 
-	getFlight(sessionId, context, entities, message, cb) {
-		console.log('Wit.JS: Entites', entities)
-		var flightDetail = 'Sunny'
-		context.flight_details = flightDetail
-
-		cb(context)
-	},
-
 
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
