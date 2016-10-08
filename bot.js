@@ -69,7 +69,7 @@ var read = function (sender, message, reply) {
 				// context = {}
 				
 				// Updating the user's current session state
-				sessions[sessionId].context = {}
+				sessions[sessionId].context = context
 
 				console.log('BOT.JS:Updated context to',context)
 			}
