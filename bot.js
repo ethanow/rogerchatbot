@@ -47,46 +47,34 @@ var read = function (sender, message, reply) {
 		console.log('BOT.JS:Received message',message)
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
-		wit.runActions(sessionId, message, sessions[sessionId].context)
-		.then((context1) => {
-			console.log('The session state is now: ' + JSON.stringify(context1));
-			return client.runActions(sessionId, 'and in Brussels?', context1);
-		})
-		.then((context2) => {
-			console.log('The session state is now: ' + JSON.stringify(context2));
-		})
-		.catch((e) => {
-			console.log('Oops! Got an error: ' + e);
-		});
 
-		// wit.runActions(
-		// 	sessionId, // the user's current session by id
-		// 	message,  // the user's message
-		// 	sessions[sessionId].context, // the user's session state
-		// 	function (error, context) { // callback
-		// 	if (error) {
-		// 		console.log('BOT.JS: Oops! Got an error from Wit:', error)
-		// 	} else {
-		// 		// Wit.ai ran all the actions
-		// 		// Now it needs more messages
-		// 		console.log('BOT.JS:Waiting for further messages')
-		// 		// Based on the session state, you might want to reset the session
-		// 		// Example:
-		// 		// if (context['done']) {
-		// 		// 	delete sessions[sessionId]
-		// 		// }
+		wit.runActions(
+			sessionId, // the user's current session by id
+			message,  // the user's message
+			sessions[sessionId].context, // the user's session state
+			function (error, context) { // callback
+			if (error) {
+				console.log('BOT.JS: Oops! Got an error from Wit:', error)
+			} else {
+				// Wit.ai ran all the actions
+				// Now it needs more messages
+				console.log('BOT.JS:Waiting for further messages')
+				// Based on the session state, you might want to reset the session
+				// Example:
+				// if (context['done']) {
+				// 	delete sessions[sessionId]
+				// }
 
-		// 		// clear context
-		// 		// context = {}
+				// clear context
+				// context = {}
 				
-		// 		// Updating the user's current session state
-		// 		sessions[sessionId].context = {}
-		// 		sessions[sessionId].context._fbid_ = fbid_temp
+				// Updating the user's current session state
+				sessions[sessionId].context = {}
 
 
-		// 		console.log('BOT.JS:Updated context to',context)
-		// 	}
-		// })
+				console.log('BOT.JS:Updated context to',context)
+			}
+		})
 	}
 }
 
