@@ -38,8 +38,8 @@ var actions = {
 		cb()
 	},
 
-	getFlight(sessionId, context, entities, message, cb) {
-		console.log('Wit.JS: Entities', entities)
+	getFlight(sessionId, context, message, cb) {
+		console.log('Wit.JS: gettingFlight')
 		var flightDetail = 'Sunny'
 		context.flight_details = flightDetail
 
