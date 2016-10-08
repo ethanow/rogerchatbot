@@ -62,62 +62,6 @@ var actions = {
 		cb(context)
 	},
 
-
-	merge(sessionId, context, entities, message, cb) {
-		console.log('WIT.JS: Calling Merge')
-		// Reset the amount
-		
-	  delete context.cat;
-    var category = firstEntityValue(entities, 'category');
-    if (category) {
-      context.cat = category;
-      console.log('WIT.JS: Merge amount')
-    }
-
-		// Retrive the location entity and store it in the context field
-		var loc = firstEntityValue(entities, 'location')
-		if (loc) {
-			context.loc = loc
-			console.log('WIT.JS:Merge location',loc)
-		}
-
-		var date = firstEntityValue(entities, 'datetime')
-		if (date) {
-			context.date = date
-			console.log('WIT.JS:Merge date',date)
-		}
-
-		/*
-		delete context.forecast
-
-		// Retrive the location entity and store it in the context field
-		var loc = firstEntityValue(entities, 'location')
-		if (loc) {
-			context.loc = loc
-			console.log('WIT.JS:Merge location',loc)
-		}
-
-		// Reset the cutepics story
-		delete context.pics
-
-		// Retrieve the category
-		var category = firstEntityValue(entities, 'category')
-		if (category) {
-			context.cat = category
-			console.log('WIT.JS:Merge caterory',cat)
-		}
-
-		// Retrieve the sentiment
-		var sentiment = firstEntityValue(entities, 'sentiment')
-		if (sentiment) {
-			context.ack = sentiment === 'positive' ? 'Glad your liked it!' : 'Aww, that sucks.'
-		} else {
-			delete context.ack
-		}
-		*/
-		cb(context)
-	},
-
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
 	}
