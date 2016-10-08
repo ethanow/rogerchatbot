@@ -41,7 +41,7 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 
 		console.log('Wit.JS: gettingFlight')
-
+		console.log('WIT.JS: Merge TO:', context._fbid_)
 		var loc = firstEntityValue(entities, 'location')
 		if (loc) {
 			context.loc = loc
@@ -98,29 +98,6 @@ var actions = {
 
 }
 
-var findExpediaFlight = function(context){
-	var loc = context.loc
-	var date = context.date
-	console.log('WIT.JS: Searching for: ', loc, ', date: ', date)
-	return new Promise(function (resolve, reject) {
-		console.log('EXPEDIA API SAYS:')
-    // var url = 'http://terminal2.expedia.com/x/mflights/search?departureAirport=SIN&arrivalAirport=BKK&departureDate=' + date + '&apikey=10jrLILOwNwMhadNnYGj8PAD2y7U8Lnq'
-    var url = 'http://www.google.com'
-        request(url, function (error, response, body) {
-        return 'SQ123'
-      })
-        /*
-        request(url, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                var jsonData = JSON.parse(body)
-                var flightTime = jsonData.legs[0].segments.departureTimeRaw.text
-                var flightNo = jsonData.legs[0].segments.externalAirlineCode + jsonData.legs[0].segments.flightNumber.text
-                console.log('EXPEDIA API SAYS: ', flightNo, 'on time: ', flightTime)
-                return flightNo + ', departing at ' + flightTime
-            }
-        }) */
-    })
-}
 
 // SETUP THE WIT.AI SERVICE
 var getWit = function () {
@@ -137,24 +114,4 @@ if (require.main === module) {
 	console.log('Bot testing mode!')
 	var client = getWit()
 	client.interactive()
-}
-/*
-// GET WEATHER FROM API
-var getWeather = function (location) {
-	return new Promise(function (resolve, reject) {
-		var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22'+ location +'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
-		request(url, function (error, response, body) {
-		    if (!error && response.statusCode == 200) {
-		    	var jsonData = JSON.parse(body)
-		    	var forecast = jsonData.query.results.channel.item.forecast[0].text
-		      console.log('WEATHER API SAYS....', jsonData.query.results.channel.item.forecast[0].text)
-		      return forecast
-		    }
-			})
-	})
-}
-*/
-// CHECK IF URL IS AN IMAGE FILE
-var checkURL = function (url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 };
