@@ -35,8 +35,8 @@ var findOrCreateSession = function (fbid) {
 var read = function (sender, message, reply) {
 	// Let's find the user
 	var sessionId = findOrCreateSession(sender)
-	console.log ('BOT.JS:user is:',sessionId.fbid)
-	var fbid_temp = sessionId.fbid
+	console.log ('BOT.JS:user is:',sessions[sessionId].fbid)
+	var fbid_temp = sessions[sessionId].fbid
 	//console.log('BOT.JS:Starting context is',context)
 
 	if (message === 'hello') {
@@ -65,12 +65,9 @@ var read = function (sender, message, reply) {
 				// 	delete sessions[sessionId]
 				// }
 
-				// clear context
-				context = {}
-				context.fbid = fbid_temp
-				
+				// clear context				
 				// Updating the user's current session state
-				sessions[sessionId].context = context
+				sessions[sessionId].context = {}
 
 				console.log('BOT.JS:Updated context to',context)
 			}
