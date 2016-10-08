@@ -47,7 +47,17 @@ var read = function (sender, message, reply) {
 		console.log('BOT.JS:Received message',message)
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
-		wit.runActions(sessionId,message, sessions[sessionId].context)
+		wit.runActions(sessionId, message, sessions[sessionId].context)
+		.then((context1) => {
+			console.log('The session state is now: ' + JSON.stringify(context1));
+			return client.runActions(sessionId, 'and in Brussels?', context1);
+		})
+		.then((context2) => {
+			console.log('The session state is now: ' + JSON.stringify(context2));
+		})
+		.catch((e) => {
+			console.log('Oops! Got an error: ' + e);
+		});
 
 		// wit.runActions(
 		// 	sessionId, // the user's current session by id
