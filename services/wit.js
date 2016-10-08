@@ -29,25 +29,21 @@ var actions = {
 			cb()
 			return
 		}
-
 		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
-
-
 		// Pass message to FB
 		FB.newMessage(context._fbid_, message)	
 
 		cb()
-		
 	},
 
 	getFlight(sessionId, context, entities, message, cb) {
-		console.log('Wit.JS: Entites', entities)
+		console.log('Wit.JS: Entities', entities)
 		var flightDetail = 'Sunny'
 		context.flight_details = flightDetail
 
-		cb(context)
+		// cb(context)
 	},
 
 
