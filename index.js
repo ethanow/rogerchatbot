@@ -56,7 +56,7 @@ app.post('/webhooks', function (req, res) {
 
       //   // Reply to sender using facebook.js
          //FB.newMessage(sender, reply)
-      })
+      //})
     }
   }
 
