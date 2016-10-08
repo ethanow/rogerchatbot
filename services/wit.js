@@ -61,8 +61,9 @@ var actions = {
 	},
 
 	['getFlight'](sessionId, context, cb){
-		console.log("Getting Flights in getFlight actions")
+		console.log("WIT.JS Getting Flights in getFlight actions")
 		context.flights = 'No flights'
+		cb(context)
 	},
 
 	error(sessionId, context, error) {
