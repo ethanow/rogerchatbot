@@ -66,7 +66,8 @@ var read = function (sender, message, reply) {
 				// }
 
 				// clear context
-				// context = {}
+				context = {}
+				context.fbid = fbid_temp
 				
 				// Updating the user's current session state
 				sessions[sessionId].context = context

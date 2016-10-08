@@ -87,6 +87,9 @@ var actions = {
 
 
 		// call some function to save the context.det and context.cat
+
+		// CALL GOOGLE API TO STORE DATA
+		// DELTETE THE DATA context.details
 		context.cat = "It's done!"
 
 		cb(context)
