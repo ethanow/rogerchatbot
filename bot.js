@@ -14,6 +14,9 @@ var findOrCreateSession = function (fbid) {
     if (sessions[k].fbid === fbid) {
       // YUP
       sessionId = k
+      sessions[sessionId].context = {
+        _fbid_: fbid
+      }
     }
   })
 
