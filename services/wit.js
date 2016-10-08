@@ -68,24 +68,26 @@ var actions = {
 	},
 
 	['memorizeCat'](sessionId, context, cb){
-		console.log("WIT.JS Getting Flights in getFlight actions")
+		console.log("WIT.JS Getting Flights in memorizeCat actions")
+		console.log("WIT.JS context.cat is ",context.category)
+		console.log("WIT.JS context.det is ",context.details)
+		//var cat = firstEntityValue(entities, 'category')
+		// if (cat) {
+		// 	context.cat = cat
+		// 	console.log('WIT.JS:memorizeCat')
 
-		var cat = firstEntityValue(entities, 'category')
-		if (cat) {
-			context.cat = cat
-			console.log('WIT.JS:memorizeCat')
+		// }
 
-		}
+		// var details = firstEntityValue(entities, 'details')
+		// if (details) {
+		// 	context.det = details
 
-		var details = firstEntityValue(entities, 'details')
-		if (details) {
-			context.det = details
+		// 	console.log('WIT.JS:memorizeCat')
 
-			console.log('WIT.JS:memorizeCat')
-
-		}
+		// }
 
 		// call some function to save the context.det and context.cat
+		context.cat = "It's done!"
 
 		cb(context)
 	},
