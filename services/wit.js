@@ -62,6 +62,11 @@ var actions = {
 		cb(context)
 	},
 
+
+	merge(sessionId, context, entities, message, cb) {
+		cb(context)
+	},
+
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
 	}
