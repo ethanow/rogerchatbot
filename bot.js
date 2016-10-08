@@ -66,7 +66,7 @@ var read = function (sender, message, reply) {
 
 				// clear context
 				// context = {}
-				console.log('BOT.JS:Now context to',context)
+				
 				// Updating the user's current session state
 				sessions[sessionId].context = {}
 				sessions[sessionId].context._fbid_ = fbid_temp
