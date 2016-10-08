@@ -38,7 +38,7 @@ var actions = {
 		cb()
 	},
 
-	getFlight(sessionId, context, entities, message, cb) {
+	callgetFlight(sessionId, context, entities, message, cb) {
 
 
 		console.log('Wit.JS: gettingFlight')
@@ -57,7 +57,7 @@ var actions = {
 		}
 
 		var flightDetail = 'Sunny'
-		context.flight_details = flightDetail
+		context.flights = flightDetail
 
 		cb(context)
 	},
@@ -66,6 +66,10 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 		cb(context)
 	},
+
+	['getFlight'](sessionId, context, cb){
+		console.log("Getting Flights")
+	}
 
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
