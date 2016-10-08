@@ -57,7 +57,7 @@ var actions = {
 		var cat = firstEntityValue(entities, 'category')
 		if (cat) {
 			context.category = cat
-			console.log('WIT.JS:memorizeCat')
+			console.log('WIT.JS:category memorizeCat')
 
 		}
 
@@ -65,17 +65,16 @@ var actions = {
 		if (details) {
 			context.details = details
 
-			console.log('WIT.JS:memorizeCat')
+			console.log('WIT.JS:details memorizeCat')
 
 		}
-
-		var flightDetail = 'Sunny'
-		context.flights = flightDetail
 
 		cb(context)
 	},
 
 	['getFlight'](sessionId, context, cb){
+		var flightDetail = 'Sunny'
+		context.flights = flightDetail
 		console.log("WIT.JS Getting Flights in getFlight actions")
 		context.flights = 'No flights'
 		cb(context)
