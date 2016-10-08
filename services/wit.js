@@ -38,7 +38,7 @@ var actions = {
 		cb()
 	},
 
-	callgetFlight(sessionId, context, entities, message, cb) {
+	merge(sessionId, context, entities, message, cb) {
 
 		console.log('Wit.JS: gettingFlight')
 
@@ -57,10 +57,6 @@ var actions = {
 		var flightDetail = 'Sunny'
 		context.flights = flightDetail
 
-		cb(context)
-	},
-
-	merge(sessionId, context, entities, message, cb) {
 		cb(context)
 	},
 
