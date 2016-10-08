@@ -43,7 +43,7 @@ var actions = {
 		var flightDetail = 'Sunny'
 		context.flight_details = flightDetail
 
-		// cb(context)
+		cb(context)
 	},
 
 
