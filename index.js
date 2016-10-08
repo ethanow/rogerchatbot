@@ -51,11 +51,11 @@ app.post('/webhooks', function (req, res) {
       FB.newMessage(entry.sender.id,entry.message.text)
 
       // SEND TO BOT FOR PROCESSING bot.js read
-      Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
+      //Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
       //   console.log ("INDEX.JS:Reply from bot ",reply)
 
       //   // Reply to sender using facebook.js
-         FB.newMessage(sender, reply)
+         //FB.newMessage(sender, reply)
       })
     }
   }
