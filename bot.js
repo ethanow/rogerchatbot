@@ -29,7 +29,7 @@ var findOrCreateSession = function (fbid) {
   }
 
   console.log('fbid is:',sessionId)
-  return sessions[sessionId]
+  return sessionId
 }
 
 var read = function (sender, message, reply) {
@@ -48,9 +48,9 @@ var read = function (sender, message, reply) {
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
 		wit.runActions(
-			sessionId.fbid, // the user's current session by id
+			sessionId, // the user's current session by id
 			message,  // the user's message
-			sessionId.context, // the user's session state
+			sessions[sessionId].context, // the user's session state
 			function (error, context) { // callback
 			if (error) {
 				console.log('BOT.JS: Oops! Got an error from Wit:', error)
@@ -58,7 +58,6 @@ var read = function (sender, message, reply) {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
 				console.log('BOT.JS:Waiting for further messages')
-				fbid_temp = sessions[sessionId].context._fbid_
 				// Based on the session state, you might want to reset the session
 				// Example:
 				// if (context['done']) {
