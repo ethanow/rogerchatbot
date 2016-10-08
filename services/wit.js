@@ -69,7 +69,7 @@ var actions = {
 
 	['getFlight'](sessionId, context, cb){
 		console.log("Getting Flights")
-	}
+	},
 
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
