@@ -1,6 +1,6 @@
 // module database.js
 var mongodb= require('mongodb');
-var MongoClient= mongodb.MongoClient;
+
 var URL = 'mongodb://master:admin@ds141108.mlab.com:41108/heroku_nhh8kwc6';
 var assert = require('assert');
 

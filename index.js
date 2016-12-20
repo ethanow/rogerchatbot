@@ -10,6 +10,7 @@ var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
 var db = require('./database');
+var MongoClient= mongodb.MongoClient;
 
 
 // LETS MAKE A SERVER!
