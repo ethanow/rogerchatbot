@@ -22,6 +22,12 @@ app.listen(app.get('port'), function () {
 // PARSE THE BODY
 app.use(bodyParser.json())
 
+// Use connect method to connect to the mongoDB Server
+MongoClient.connect(url, function(err, db) {
+ assert.equal(null, err);
+ console.log("Connected correctly to server");
+ db.close();
+});
 
 // index page
 app.get('/', function (req, res) {
