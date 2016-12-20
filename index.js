@@ -9,6 +9,7 @@ var crypto = require('crypto')
 var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
+var db = require('./database');
 
 
 // LETS MAKE A SERVER!

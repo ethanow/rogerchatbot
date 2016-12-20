@@ -69,6 +69,8 @@ var actions = {
 
 		}
 
+
+
 		cb(context)
 	},
 
@@ -87,13 +89,16 @@ var actions = {
 
 
 		// call some function to save the context.det and context.cat
-
-		// CALL GOOGLE API TO STORE DATA
+		// CHekc if data already exisst
+		// else STORE DATA
 		// DELTETE THE DATA context.details
 		context.cat = "It's done!"
 
 		cb(context)
+
 	},
+
+	//['retrieveCat']
 
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
