@@ -9,8 +9,17 @@ var crypto = require('crypto')
 var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
-var db = require('./database');
+//var db = require('./database');
+
+var mongodb= require('mongodb');
 var MongoClient= mongodb.MongoClient;
+var URL = 'mongodb://master:admin@ds141108.mlab.com:41108/heroku_nhh8kwc6';
+var assert = require('assert');
+
+var db;
+var error;
+var waiting = []; // Callbacks waiting for the connection to be made
+
 
 
 // LETS MAKE A SERVER!
