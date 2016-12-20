@@ -11,6 +11,7 @@ var FB = require('./connectors/facebook')
 var Bot = require('./bot')
 //var db = require('./database');
 
+// MongoDB - can move this to database.js?
 var mongodb= require('mongodb');
 var MongoClient= mongodb.MongoClient;
 var url = 'mongodb://master:admin@ds141108.mlab.com:41108/heroku_nhh8kwc6';
