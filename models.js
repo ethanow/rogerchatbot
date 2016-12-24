@@ -1,4 +1,7 @@
 // module model.js
+var mongodb= require('mongodb');
+var mongoose = require('mongoose');
+
 var UserSchema = mongoose.Schema({
   fbID: String
 })
