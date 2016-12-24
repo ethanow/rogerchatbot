@@ -9,15 +9,12 @@ var crypto = require('crypto')
 var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
-var mongoose = require('mongoose')
-//var db = require('./database');
 
-// MongoDB - can move this to database.js?
+var models = require('./models');
+
 var mongodb= require('mongodb');
-var MongoClient= mongodb.MongoClient;
-var url = 'mongodb://master:admin@ds141108.mlab.com:41108/heroku_nhh8kwc6';
+var mongoose = require('mongoose')
 var assert = require('assert');
-
 var db;
 var error;
 var waiting = []; // Callbacks waiting for the connection to be made
@@ -33,22 +30,24 @@ app.listen(app.get('port'), function () {
 })
 // PARSE THE BODY
 app.use(bodyParser.json())
-
+/*
 // Use connect method to connect to the mongoDB Server
 MongoClient.connect(url, function(err, db) {
  assert.equal(null, err);
  console.log("Connected correctly to server");
  db.close();
 });
+*/
 
-mongoose.connect(url);
-
+var uri = 'mongodb://master:admin@ds141108.mlab.com:41108/heroku_nhh8kwc6';
+mongoose.connect(uri);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
   console.log("connected to db via mongoose!!")
 });
+
 
 // index page
 app.get('/', function (req, res) {
@@ -76,6 +75,8 @@ app.post('/webhooks', function (req, res) {
     } else {
       console.log("INDEX.JS:Received message from ",entry.sender.id)
       console.log("INDEX.JS:message is",entry.message.text)
+
+      // Create if user is new, otherwise find the data table.
 
       // SEND TO BOT FOR PROCESSING bot.js read
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
