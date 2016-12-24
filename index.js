@@ -9,6 +9,7 @@ var crypto = require('crypto')
 var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
+var mongoose = require('mongoose')
 //var db = require('./database');
 
 // MongoDB - can move this to database.js?
@@ -38,6 +39,15 @@ MongoClient.connect(url, function(err, db) {
  assert.equal(null, err);
  console.log("Connected correctly to server");
  db.close();
+});
+
+mongoose.connect(url);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("connected to db via mongoose!!")
 });
 
 // index page
